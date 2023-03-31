@@ -1,4 +1,5 @@
-数据库后台服务：<br> 功能1. 敏感信息审计<br>
+数据库后台服务：
+功能 敏感信息审计
 
 ### 版本要求：
 
@@ -30,7 +31,7 @@ $ pip3 install numpy
 ### 3.配置运行：
 
 ```shell
-$ cd /usr/local && git clone http://username:password@10.0.30.24/dba/db-analyzer.git
+$ cd /usr/local && git clone https://github.com/xudongweng/db_analyzer.git
 $ cd db-analyzer/src
 $ python3 manage.py runserver 0.0.0.0:8000 --noreload
 ```
@@ -54,7 +55,7 @@ RUN pip3 install sqlalchemy==1.4.41
 RUN pip3 install pyyaml==6.0
 
 FROM django_env as db_analyzer_server  
-RUN cd /usr/local && git clone http://username:password@10.0.30.24/dba/db-analyzer.git  
+RUN cd /usr/local && git clone https://github.com/xudongweng/db_analyzer.git
 WORKDIR /usr/local/db-analyzer/src
 ```
 
