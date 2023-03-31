@@ -9,7 +9,7 @@
 - sqlalchemy 1.4.41
 - numpy
 
-## 系统环境
+## Linux系统环境
 
 ### 1.环境安装：
 
