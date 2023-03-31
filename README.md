@@ -11,13 +11,7 @@
 
 ## 系统环境
 
-### 1.数据库安装：
-
-```shell
-$ yum -y install ftp://ftp.pbone.net/mirror/archive.fedoraproject.org/fedora/linux/updates/testing/21/x86_64/s/sqlite-3.9.0-1.fc21.x86_64.rpm
-```
-
-### 2.环境安装：
+### 1.环境安装：
 
 ```shell
 $ yum -y install python3 python3-devel
@@ -28,7 +22,7 @@ $ pip3 install sqlalchemy==1.4.41
 $ pip3 install numpy
 ```
 
-### 3.配置运行：
+### 2.配置运行：
 
 ```shell
 $ cd /usr/local && git clone https://github.com/xudongweng/db_analyzer.git
