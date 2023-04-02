@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>执行历史</title>
+    <style type="text/css">
+      table.gridtable {
+          font-family: verdana,arial,sans-serif;
+          font-size:13px;
+          color:#000000;
+          border-width: 1px;
+          border-color: #000000;
+          border-collapse: collapse;
+      }
+      table.gridtable th {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #000000;
+          background-color: #ffffff;
+          text-align : center;
+      }
+      table.gridtable td {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #000000;
+          background-color: #ffffff;
+          text-align : center;
+      }
+    </style>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    <p><input type="submit" name="back_search" value="返回"></p>
+</form>
+<table class="gridtable">
+<tr><td>id</td><td>job id</td><td>开始时间</td><td>结束时间</td><td>耗时</td></tr>
+{% for i,j,k,l,m in rlt_job_history %}
+    <tr><td>{{i}}</td><td>{{j}}</td><td>{{k}}</td><td>{{l}}</td><td>{{m}}</td></tr>
+{% endfor %}
+</table>
+</body>
+</html>

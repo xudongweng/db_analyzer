@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>调整定时</title>
+    <style type="text/css">
+        table.gridtable {
+          font-family: verdana,arial,sans-serif;
+          font-size:13px;
+          color:#000000;
+          border-width: 1px;
+          border-color: #ffffff;
+          border-collapse: collapse;
+      }
+      table.gridtable th {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #ffffff;
+          background-color: #ffffff;
+          text-align : left
+      }
+      table.gridtable td {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #ffffff;
+          background-color: #ffffff;
+      }
+    </style>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    <table class="gridtable">
+        <tr><td>job id：</td><td><label>{{job_id}}</label></td><td><input type="text" name="job_id" value="{{job_id}}" hidden></td></tr>
+        <tr><td>定时：</td><td><input type="text" name="cron_str" value="{{cron_str}}" ></td><td>秒 分 时 日 月 星期 周 年</td></tr>
+        <tr><td></td>
+            <td><input type="submit" value="确定"><form action="" method="post">{% csrf_token %}<input type="submit" name="back_search" value="返回"></form></td><td></td>
+        </tr>
+    </table>
+</form>
+<p>{{ rlt_message }}</p>
+</body>
+</html>

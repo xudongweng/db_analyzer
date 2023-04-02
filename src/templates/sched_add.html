@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加</title>
+    <style type="text/css">
+        table.gridtable {
+          font-family: verdana,arial,sans-serif;
+          font-size:13px;
+          color:#000000;
+          border-width: 1px;
+          border-color: #ffffff;
+          border-collapse: collapse;
+      }
+      table.gridtable th {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #ffffff;
+          background-color: #ffffff;
+          text-align : left
+      }
+      table.gridtable td {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #ffffff;
+          background-color: #ffffff;
+      }
+    </style>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    <table class="gridtable">
+        <tr><td> 数据库类型：</td>
+            <td>
+            <select name="db_type" id="dbtypes"  >
+                <option value="1">MySQL</option>
+                <option value="2">Oracle</option>
+            </select>
+            </td><td></td>
+        </tr>
+        <tr><td>远程主机：</td><td><input type="text" name="remote_host" value="{{remote_host}}"> </td><td></td></tr>
+        <tr><td>用户名：</td><td><input type="text" name="username" value="{{username}}"> </td><td></td></tr>
+        <tr><td>密码：</td><td><input type="password" name="password"> </td><td></td></tr>
+        <tr><td>端口：</td><td><input name="port" type="number" min="1" step="1" value="{{port}}"></td><td></td></tr>
+        <tr><td>数据库：</td><td><input type="text" name="db_name" value="{{db_name}}"></td><td></td></tr>
+        <tr><td>表：</td><td><input type="text" name="table_name" value="{{table_name}}"></td><td></td></tr>
+        <tr><td>检查类型：</td><td>
+        <select name="check_type" id="checktypes"  >
+            <option value="1" >手机号</option>
+            <option value="2" selected>身份证</option>
+            <option value="3" >无主键</option>
+        </select>
+        </td><td></td></tr>
+        <tr><td>定时：</td><td><input type="text" name="cron_str" value="* * * * * * * *" ></td><td>秒 分 时 日 月 星期 周 年</td></tr>
+        <tr><td>限定行数：</td><td><input name="limit_row" type="number" min="1" step="1" value="{{limit_row}}" style="width:60px;"></td><td></td></tr>
+        <tr><td></td>
+            <td><input type="submit" value="添加"><form action="" method="post">{% csrf_token %}<input type="submit" name="back_index" value="返回"></form></td><td></td>
+        </tr>
+    </table>
+</form>
+<p>{{ rlt_message }}</p>
+</body>
+</html>

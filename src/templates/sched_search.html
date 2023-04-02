@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询</title>
+    <style type="text/css">
+      table.gridtable {
+          font-family: verdana,arial,sans-serif;
+          font-size:13px;
+          color:#000000;
+          border-width: 1px;
+          border-color: #000000;
+          border-collapse: collapse;
+      }
+      table.gridtable th {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #000000;
+          background-color: #ffffff;
+          text-align : center;
+      }
+      table.gridtable td {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #000000;
+          background-color: #ffffff;
+          text-align : center;
+      }
+    </style>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    <p><input type="submit" name="back_index" value="返回"></p>
+</form>
+<br>
+<table class="gridtable">
+<tr ><td>job id</td><td>部署主机</td><td>数据库类型</td><td>远程主机</td><td>数据库</td><td>表</td><td>检查类型</td><td>定时规则</td><td>限定行数</td><td>下次执行时间</td><td>运行状态</td><td>创建时间</td><td>运维任务</td><td>定时任务</td><td>执行记录</td></tr>
+{% for i,j,k,l,m,n,o,p,q,r,s,t,u in rlt_job_list %}
+    <tr>
+        <td>{{i}}</td><td>{{j}}</td><td>{{k}}</td><td>{{l}}</td><td>{{m}}</td><td>{{n}}</td><td>{{o}}</td><td>{{p}}</td><td>{{q}}</td><td>{{r}}</td><td>{{s}}</td><td>{{t}}</td>
+        <td>
+            <form action="../del/" method="post">{% csrf_token %}<input type="text" name="job_id" value="{{i}}" hidden><input type="submit" value="删除任务"></form>
+            <form action="../resume_stop/" method="post">{% csrf_token %}<input type="text" name="job_id" value="{{i}}" hidden><input type="submit" value="运行|停止" {{u}}></form></td>
+        <td>
+            <form action="../cron_reset/" method="post">{% csrf_token %}<input type="text" name="job_id" value="{{i}}" hidden><input type="text" name="cron_str" value="{{p}}" hidden><input type="submit" value="调整定时" {{u}}></form>
+            <form action="../go_run/" method="post">{% csrf_token %}<input type="text" name="job_id" value="{{i}}" hidden><input type="submit" value="立即执行" {{u}}></form></td>
+        <td>
+            <form action="../search/" method="post">{% csrf_token %}<input type="text" name="job_id" value="{{i}}" hidden><input type="submit" value="查看记录"></form>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
